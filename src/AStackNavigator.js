@@ -6,7 +6,12 @@ import A2 from './screens/A2';
 const AStackNavigator = StackNavigator(
     {
         a1: A1,
-        a2: A2
+        a2: {
+            screen: A2,
+            navigationOptions: {
+                drawerLockMode: 'locked-closed'
+            }
+        }
     },
     {
         initialRouteName: 'a1',

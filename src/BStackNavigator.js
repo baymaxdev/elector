@@ -6,7 +6,12 @@ import B2 from './screens/B2';
 const BStackNavigator = StackNavigator(
     {
         b1: B1,
-        b2: B2
+        b2: {
+            screen: B2,
+            navigationOptions: {
+                drawerLockMode: 'locked-closed'
+            }
+        }
     },
     {
         initialRouteName: 'b1',

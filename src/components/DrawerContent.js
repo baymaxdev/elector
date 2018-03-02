@@ -8,8 +8,10 @@ export default class DrawerContent extends Component {
     _onPress = (index) => {
         if (index == 0) {
             this.props.navigation.navigate('screenA');
-        } else {
+        } else if (index == 1) {
             this.props.navigation.navigate('screenB');
+        } else {
+            this.props.screenProps.goBack();
         }
     }
     _renderItem = (value, index) => {
@@ -38,7 +40,7 @@ export default class DrawerContent extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-        this.titles = ['Screen A', 'screen B'];
+        this.titles = ['Screen A', 'Screen B', 'Go Back'];
     }
 
     render() {

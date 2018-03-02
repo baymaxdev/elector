@@ -9,13 +9,13 @@ const routeConfigs = {
     screenA: {
         screen: AStackNavigator,
         navigationOptions: ({navigation}) => ({
-            drawerLockMode: 'locked-closed'
+
         })
     },
     screenB: {
         screen: BStackNavigator,
         navigationOptions: ({navigation}) => ({
-            drawerLockMode: 'locked-closed'
+            
         })
     },
 };
@@ -23,7 +23,7 @@ const routeConfigs = {
 const navigatorConfig = {
     // drawerWidth: Metrics.screenWidth * 0.7,
     initialRouteName: 'screenA',
-    contentComponent: ({navigation}) => <DrawerContent navigation={navigation}/>,
+    contentComponent: DrawerContent, // ({navigation}) => <DrawerContent navigation={navigation}/>,
     contentOptions: {
         // activeTintColor: Colors.whiteColor,
         // inactiveTintColor: Colors.brandPrimary,
@@ -38,4 +38,14 @@ const navigatorConfig = {
 
 const MainDrawerNavigator = DrawerNavigator(routeConfigs, navigatorConfig);
 
-export default MainDrawerNavigator;
+class MainDrawerContainer extends Component {
+    render() {
+        return (
+            <MainDrawerNavigator screenProps={{goBack: () => {
+                this.props.navigation.goBack();
+            }}}/>
+        )
+    }
+}
+
+export default MainDrawerContainer;
